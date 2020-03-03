@@ -1,4 +1,4 @@
-@extends('layout/nav')
+@extends('layouts/nav')
 
  @section('container')
 <section class="engine"><a href="https://mobirise.info/h">create your own web page</a></section><section class="cid-qTkA127IK8 mbr-fullscreen mbr-parallax-background" id="header2-1">

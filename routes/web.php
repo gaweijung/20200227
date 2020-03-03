@@ -11,11 +11,17 @@
 |
 */
 
+Route::get('/' , 'FrontController@index');
 
 Route::get('/', function () {
     return view('font/index');
 });
 
-Route::get('/news', function () {
-    return view('news');
-});
+Route::get('/news', 'FrontController@news');
+
+
+Route::get('logoin', 'HomeController@index');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');
