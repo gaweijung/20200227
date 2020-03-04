@@ -13,15 +13,26 @@
 
 Route::get('/' , 'FrontController@index');
 
-Route::get('/', function () {
-    return view('font/index');
-});
+// Route::get('/', function () {
+//     return view('font/index');
+// });
 
 Route::get('/news', 'FrontController@news');
 
 
-Route::get('logoin', 'HomeController@index');
+// Route::get('logoin', 'HomeController@index');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index');
+Route::get('/home', 'HomeController@index')->middleware('auth');
+
+
+
+// Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/home/news', 'NewsController@index')->middleware('auth');
+
+Route::post('/home/news/store', 'NewsController@store
+')->middleware('auth');
+
+

@@ -6,13 +6,23 @@
     <title>Document</title>
 </head>
 <body>
+    @foreach ($news_data as $item)
     <div>
-    我是最新消息 <br>
+        我是最新消息 <br>
+    <img src="{{$item->img}}" alt="">
+    <h4>
+        {{$item->title}}
+    </h4>
+    <p>
+        {{$item->content}}
+    </p>
+        <a href="/">
+        點我回首頁
+        </a>
+        </div>
+    @endforeach
 
-    <a href="/">
-    點我回首頁
-    </a>
-    </div>
+
 
 
 
