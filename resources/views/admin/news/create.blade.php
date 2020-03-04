@@ -3,7 +3,7 @@
 
 
 @section('content')
-
+<h2>新增最新消息</h2>
 <div class="container">
 <form method="POST" action="/home/news/store">
     @csrf
