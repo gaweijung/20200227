@@ -32,7 +32,6 @@ Route::get('/home', 'HomeController@index')->middleware('auth');
 
 Route::get('/home/news', 'NewsController@index')->middleware('auth');
 
-Route::post('/home/news/store', 'NewsController@store
-')->middleware('auth');
+Route::post('/home/news/store', 'NewsController@store')->middleware('auth');
 
 

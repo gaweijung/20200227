@@ -17,7 +17,7 @@ class CreateNews extends Migration
             $table->bigIncrements('id');
             $table->string('img');
             $table->string('title')->default('title');
-            $table->string('content')->nullable();
+            $table->string('content')->nullable('test');
             $table->timestamps();
         });
     }

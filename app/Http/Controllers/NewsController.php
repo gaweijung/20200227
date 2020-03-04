@@ -8,15 +8,10 @@ use App\News;
 class NewsController extends Controller
 {
    public function index(){
-       return view('auth/news/index');
+       return view('admin/news/index');
    }
    public function store(Request $request){
-       $news_data = $request->all();
-       News::create($news_data)->save();
-
+       News::create($request->all());
        return redirect('home/news');
    }
-
-
-
 }

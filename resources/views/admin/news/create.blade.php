@@ -7,7 +7,7 @@
 <div class="container">
 <form method="POST" action="/home/news/store">
     @csrf
-    
+
     <div class="form-group">
         <label for="img">img</label>
         <input type="text" class="form-control" id="img" name="img">
