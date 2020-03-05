@@ -23,8 +23,10 @@
 
         <thead>
             @foreach ($all_news as $item)
-            <tr>
-                <th>{{$item->img}}</th>
+                        <tr>
+                <th>
+                    <img width="120" src="{{asset('/storage/'.$item->img)}}" alt="">
+                </th>
                 <th>{{$item->sort}}</th>
                 <th>{{$item->title}}</th>
                 <th>{{$item->content}}</th>

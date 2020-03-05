@@ -5,12 +5,22 @@
 @section('content')
 
 <div class="container">
-<form method="POST" action="/home/news/updata/{{$news->id}}">
+<form method="POST" action="/home/news/updata/{{$news->id}}" enctype="multipart/form-data">
     @csrf
 
     <div class="form-group">
-        <label for="img">img</label>
-    <input type="text" class="form-control" id="img" name="img" value="{{$news->img}}">
+        <label for="img">現有圖片</label>
+        <img class="img-fluid" width="250" src="{{asset('/storage/'.$item->img)}}" alt="">
+
+      </div>
+      <div class="form-group">
+        <label for="img">重新上傳圖片</label>
+        <input type="file" class="form-control" id="img" name="img">
+
+      </div>
+      <div class="form-group">
+        <label for="sort">sort</label>
+        <input type="unmber" class="form-control" id="sort" name="sort" value="{{$news->sort}}">
 
       </div>
     <div class="form-group">
