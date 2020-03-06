@@ -9,8 +9,13 @@
     @csrf
 
     <div class="form-group">
-        <label for="img">img</label>
+        <label for="img">主要圖片上傳</label>
         <input type="file" class="form-control" id="img" name="img" required>
+
+      </div>
+      <div class="form-group">
+        <label for="img">多張圖片上傳</label>
+        <input type="file" class="form-control" id="img" name="img" required multiple>
 
       </div>
     <div class="form-group">

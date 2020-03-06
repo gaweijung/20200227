@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 
-use DB;
-// use App\News;
+// use DB;
+use App\News;
 use Illuminate\Http\Request;
+
 
 class FrontController extends Controller
 {
@@ -14,8 +15,15 @@ class FrontController extends Controller
  }
 
 public function news(){
-    $news_data = DB::table('news')->orderby('sort' , 'desc')-> get();
+    $news_data = News::orderBy('sort' , 'desc')-> get();
     return view('font/news' , compact('news_data'));
 }
+
+public function news_detail($id){
+    $item = News::find($id);
+
+    return view('font/news_detail');
+}
+
 
 }

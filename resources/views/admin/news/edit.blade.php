@@ -10,12 +10,12 @@
 
     <div class="form-group">
         <label for="img">現有圖片</label>
-        <img class="img-fluid" width="250" src="{{asset('/storage/'.$item->img)}}" alt="">
+        <img class="img-fluid" width="250" src="{{asset('/storage/'.$news->img)}}" alt="">
 
       </div>
       <div class="form-group">
         <label for="img">重新上傳圖片</label>
-        <input type="file" class="form-control" id="img" name="img">
+        <input type="file" class="form-control" id="img" name="img" multiple>
 
       </div>
       <div class="form-group">

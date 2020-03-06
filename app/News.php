@@ -11,5 +11,8 @@ class News extends Model
         'img', 'title', 'content', 'sort',
     ];
 
+    public function news_imgs(){
+        return $this->hasMany('App\NewsImgs');
+    }
 
 }

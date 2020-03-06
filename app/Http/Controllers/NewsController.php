@@ -6,6 +6,7 @@ use App\News;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 
 class NewsController extends Controller
 {
@@ -57,7 +58,27 @@ class NewsController extends Controller
     // $news->save();
 
 
-News::find($id)->update($request->all());
+// News::find($id)->update($request->all());
+
+        $item = News::find($id);
+        $old_img = $item->img;
+        //  dd($old_img);
+        $news_data = $request ->all();
+
+        if ($request->hasFile('img')) {
+
+            Storage::disk('public')->delete($old_img);
+
+            $file_name = $request->file('img')->store('','public');
+            $news_data['img']=$file_name;
+        }
+        else {
+            $news_data['img'] = $old_img;
+        }
+
+        News::find($id) ->update($news_data);
+
+        return redirect('home/news');
 
     // $request_data = $request->all();
     // $items = News::find($id);
@@ -73,7 +94,7 @@ News::find($id)->update($request->all());
     // $items -> update($request_data);
 
 
-    return redirect('home/news');
+    // return redirect('home/news');
    }
 
    public function delete(Request $request,$id){
