@@ -20,9 +20,9 @@ public function news(){
 }
 
 public function news_detail($id){
-    $item = News::find($id);
-
-    return view('font/news_detail');
+    $news = News::with('news_imgs')->find($id);
+  
+    return view('font/news_detail' , compact('news'));
 }
 
 
