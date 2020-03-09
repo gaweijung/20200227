@@ -183,7 +183,7 @@
   <script src="{{asset('assets/gallery/player.min.js')}}"></script>
   <script src="{{asset('assets/gallery/script.js')}}"></script>
   <script src="{{asset('assets/slidervideo/script.js')}}"></script>
-
+ @yield('js')
 
 </body>
 </html>

@@ -1,6 +1,7 @@
 @extends('layouts/app')
 
 @section('css')
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.16/dist/summernote.min.css" rel="stylesheet">
 <style>
 .news_img_card .btn-danger{
   position: absolute;
@@ -21,7 +22,7 @@
     <br>
     <div class="form-group">
         <label for="img">現有主要圖片</label>
-        <img class="img-fluid" width="250" src="{{asset('/storage/'.$news->img)}}" alt="">
+        <img class="img-fluid" width="250" src="{{asset($news->img)}}" alt="">
 
       </div>
       <div class="form-group">
@@ -34,10 +35,10 @@
           現有多張圖片組
         @foreach ($news->news_imgs as $item)
         <div class="col-2">
-            <div class="news_img_card" data-newsimgid="{{$item->id}}">
+            <div class="news_img_card" data-newsimgid="{{asset($news->img)}}">
             <button type="button" class="btn btn-danger" data-newsimgid="{{$item->id}}">X</button>
-                <img class="img-fluid" src="{{asset('/storage/'.$item->news_img)}}" alt="">
-                <input class="form-control" type="text" value="{{$item->sort}}">
+                <img class="img-fluid" src="{{asset($item->news_img)}}" alt="">
+            <input class="form-control" type="text" value="{{$item->sort}}" onchange="ajax_post_sort(this,{{$item->id}})">
             </div>
         </div>
 
@@ -63,7 +64,7 @@
     </div>
     <div class="form-group">
       <label for="content">content</label>
-      <textarea class="form-control" name="content" id="content" cols="30" rows="10">{{$news->content}}</textarea>
+      <textarea class="form-control" name="content" id="content" cols="30" rows="10">{!! $news->content !!}</textarea>
       {{-- <input type="text" class="form-control" id="content" name="content" value="{{$news->content}}"> --}}
     </div>
 
@@ -74,7 +75,7 @@
 @endsection
 
 @section('js')
-
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.16/dist/summernote.min.js"></script>
 <script>
 
     $.ajaxSetup({
@@ -99,8 +100,28 @@
             });
         });
 
+        function ajax_post_sort(element,img_id){
+            var img_id;
+            var sort_value = element.value;
 
-        
+            $.ajax({
+            url: "/home/ajax_post_sort",
+            method: 'post',
+            data: {
+                id: img_id,
+                sort: sort_value
+                  },
+                success: function(result){
+                $(`.news_img_card[data-newsimgid=${newsimgid}]`).remove();
+                }
+            });
+        }
+        $(document).ready(function() {
+  $('#content').summernote({
+    minHeight: 300,
+  });
+});
+
 
 
 </script>

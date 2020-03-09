@@ -25,11 +25,11 @@
             @foreach ($all_news as $item)
                         <tr>
                 <th>
-                    <img width="120" src="{{asset('/storage'.$item->img)}}" alt="">
+                    <img width="120" src="{{asset($item->img)}}" alt="">
                 </th>
                 <th>{{$item->sort}}</th>
                 <th>{{$item->title}}</th>
-                <th>{{$item->content}}</th>
+                <th>{!! $item->content !!}</th>
                 <th>
                 <a href="/home/news/edit/{{$item->id}}" class="btn btn-success btn-sm">修改</a>
                 <button class="btn btn-danger btn-sm" onclick="show_confirm({{$item->id}})">刪除</button>

@@ -31,6 +31,7 @@ class NewsController extends Controller
 
 // 暴力上傳
 if($request->hasFile('img')) {
+
     $file = $request->file('img');
     $path = $this->fileUpload($file,'news');
     $news_data['img'] = $path;
@@ -56,7 +57,7 @@ if($request->hasFile('news_imgs'))
    }
 
    public function edit($id){
-    //
+
     $news = News::with('news_imgs')->find($id);
 
     return view('admin/news/edit', compact('news'));
@@ -88,12 +89,11 @@ if($request->hasFile('news_imgs'))
     $items = News::find($id);
 
     if($request->hasFile('img')){
-        // 刪除就圖片
+        // 刪除舊圖片
         $old_image = $items->img;
-
         File::delete(public_path().'/storage'.$old_image);
-        // dd('/storage'.$old_image);
-        // 上傳薪圖片
+
+        // 上傳新圖片
         $file = $request->file('img');
         $path = $this->fileUpload($file,'news');
         $request_data['img'] = $path;
@@ -105,7 +105,7 @@ if($request->hasFile('news_imgs'))
    }
 
    public function delete(Request $request,$id){
-    // News::find($id)->delete();
+
     $item = News::find($id);
      //單一圖片的刪除
      $old_image = $item->img;
@@ -115,6 +115,19 @@ if($request->hasFile('news_imgs'))
          File::delete(public_path().'/storage'.$old_image);
      }
      $item->delete();
+
+    // 多圖片刪除
+    $news_imgs = NewsImgs::where('news_id' , $id)->get();
+    foreach($news_imgs as $news_img){
+        $old_image = $news_img->img;
+        if(file_exists(public_path().'/storage'.$old_image))
+
+     {
+         File::delete(public_path().'/storage'.$old_image);
+     }
+         $news_img->delete();
+        }
+
 
     return redirect('home/news');
    }
@@ -133,7 +146,8 @@ if($request->hasFile('news_imgs'))
     //檔案名稱會被重新命名
     $filename = strval(time().md5(rand(100, 200))).'.'.$extension;
     //移動到指定路徑
-    move_uploaded_file($file, public_path().'/storage/'.'/upload/'.$dir.'/'.$filename);
+    // move_uploaded_file($file, public_path().'/storage/'.'/upload/'.$dir.'/'.$filename);
+    move_uploaded_file($file, public_path('/upload/'.$dir.'/'.$filename));
     //回傳 資料庫儲存用的路徑格式
     return '/upload/'.$dir.'/'.$filename;
     }
@@ -152,6 +166,17 @@ if($request->hasFile('news_imgs'))
         return $newsimgid;
     }
 
+
+    public function ajax_post_sort(Request $request)
+    {
+    $news_img_id = $request->news_id;
+
+    $sort = $request->sort_value;
+
+    $news_img = NewsImgs::find($news_img_id);
+
+    $news_img->sort = $sort;
+
+    $news_img->save();
+    }
 }
-
-

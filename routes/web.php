@@ -41,3 +41,5 @@ Route::post('/home/news/updata/{id}', 'NewsController@updata')->middleware('auth
 Route::post('/home/news/delete/{id}', 'NewsController@delete')->middleware('auth');
 
 Route::post('home/ajax_delete_news_img', 'NewsController@ajax_delete_news_img')->middleware('auth');
+
+Route::post('/home/ajax_post_sort', 'NewsController@ajax_post_sort')->middleware('auth');

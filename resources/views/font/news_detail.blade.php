@@ -13,7 +13,7 @@
 
 
            @foreach ($news->news_imgs as $news_img)
-                <img width="250"  src="{{asset('/storage/'.$news_img->news_img)}}" alt="">
+                <img width="250"  src="{{asset($news_img->news_img)}}" alt="">
 
                 {{-- {{$news_img->news_img}} --}}
            @endforeach
