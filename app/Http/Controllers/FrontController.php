@@ -21,9 +21,11 @@ public function news(){
 
 public function news_detail($id){
     $news = News::with('news_imgs')->find($id);
-  
+
     return view('font/news_detail' , compact('news'));
 }
-
+public function products(){
+    return view('font/products');
+}
 
 }
