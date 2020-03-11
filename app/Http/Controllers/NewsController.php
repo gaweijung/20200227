@@ -13,6 +13,7 @@ class NewsController extends Controller
 {
    public function index(){
        $all_news = News::all();
+
        return view('admin/news/index' , compact('all_news'));
    }
 
@@ -87,7 +88,7 @@ if($request->hasFile('news_imgs'))
 
     $request_data = $request->all();
     $items = News::find($id);
-
+    
     if($request->hasFile('img')){
         // 刪除舊圖片
         $old_image = $items->img;

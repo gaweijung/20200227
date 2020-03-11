@@ -8,6 +8,10 @@ class ProductTypes extends Model
 {
     protected $table = 'product_types';
     protected $fillable = [
-         'types' , 'sort',
+         'types' , 'sort'
     ];
+
+    public function products(){
+        return $this->hasMany('App\Products')->orderby('sort' , 'desc');
+}
 }

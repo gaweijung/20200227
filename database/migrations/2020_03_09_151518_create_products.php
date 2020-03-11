@@ -17,10 +17,9 @@ class CreateProducts extends Migration
             $table->bigIncrements('id');
             $table->string('img');
             $table->integer('sort')->default(0);
-            $table->string('types_id');
             $table->string('title')->default('title');
             $table->string('content')->nullable('test');
-
+            $table->string('types_id');
             $table->timestamps();
         });
     }

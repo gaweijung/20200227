@@ -8,26 +8,32 @@
 
 <div class="container">
 
-    <a href="/home/productType/create" class="btn btn-success">新增產品類型</a>
+    <a href="/home/news/create" class="btn btn-success">新增最新消息</a>
 
     <table id="example" class="table table-striped table-bordered" style="width:100%">
         <thead>
             <tr>
+                <th>IMG</th>
                 <th>sort</th>
-                <th>type</th>
-                <th width="125"></th>
+                <th>TITLE</th>
+                <th>CONTENT</th>
+                <th width="90"></th>
+
         </thead>
 
         <thead>
-            @foreach ($items as $item)
+            @foreach ($all_news as $item)
                         <tr>
-
+                <th>
+                    <img width="120" src="{{asset($item->img)}}" alt="">
+                </th>
                 <th>{{$item->sort}}</th>
-                <th>{{$item->types}}</th>
-                <th >
-                <a href="/home/productType/edit/{{$item->id}}" class="btn btn-success btn-sm">修改</a>
+                <th>{{$item->title}}</th>
+                <th>{!! $item->content !!}</th>
+                <th>
+                <a href="/home/news/edit/{{$item->id}}" class="btn btn-success btn-sm">修改</a>
                 <button class="btn btn-danger btn-sm" onclick="show_confirm({{$item->id}})">刪除</button>
-                <form id="delete-form-{{$item->id}}" action="/home/productType/delete/{{$item->id}}" method="POST" style="display: none;">
+                <form id="delete-form-{{$item->id}}" action="/home/news/delete/{{$item->id}}" method="POST" style="display: none;">
                     @csrf
                 </form>
                 </th>

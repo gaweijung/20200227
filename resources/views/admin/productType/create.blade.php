@@ -5,8 +5,9 @@
 @endsection
 
 @section('content')
-<h2>新增產品類型</h2>
+
 <div class="container">
+    <h2>新增產品類型</h2>
 <form method="POST" action="/home/productType/store" enctype="multipart/form-data">
     @csrf
 

@@ -17,8 +17,20 @@
 @section('content')
 
 <div class="container">
-<form method="POST" action="/home/productType/updata/{{$product->id}}" enctype="multipart/form-data">
+<form method="POST" action="/home/products/updata/{{$product->id}}" enctype="multipart/form-data">
     @csrf
+    <br>
+    <div class="form-group">
+        <label for="img">現有主要圖片</label>
+        <img class="img-fluid" width="250" src="{{asset($product->img)}}" alt="">
+
+      </div>
+      <div class="form-group">
+        <label for="img">重新上傳主要圖片</label>
+        <input type="file" class="form-control" id="img" name="img" multiple>
+
+      </div>
+      <br>
 
 
       <div class="form-group">
@@ -27,9 +39,14 @@
 
       </div>
     <div class="form-group">
-      <label for="types">type</label>
-      <input type="text" class="form-control" id="types" name="types" value="{{$product->types}}">
+      <label for="title">title</label>
+      <input type="text" class="form-control" id="title" name="title" value="{{$product->title}}">
 
+    </div>
+    <div class="form-group">
+      <label for="content">content</label>
+      <textarea class="form-control" name="content" id="content" cols="30" rows="10">{!! $product->content !!}</textarea>
+      {{-- <input type="text" class="form-control" id="content" name="content" value="{{$news->content}}"> --}}
     </div>
 
     <button type="submit" class="btn btn-primary">Submit</button>
@@ -38,7 +55,7 @@
 
 @endsection
 
-@section('js')
+{{-- @section('js')
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.16/dist/summernote.min.js"></script>
 <script>
 
@@ -89,4 +106,4 @@
 
 
 </script>
-@endsection
+@endsection --}}

@@ -8,7 +8,9 @@ class ProductTypeController extends Controller
 {
     public function index(){
         $items = ProductTypes::all();
-        return view('admin/productType/index' , compact('items') );
+
+        return view('admin/productType/index' , compact('items'));
+
     }
 
     public function create(){
@@ -22,6 +24,28 @@ class ProductTypeController extends Controller
 
            return redirect('/home/productType');
     }
+
+    public function edit($id){
+
+        $product = ProductTypes::find($id);
+
+        return view('admin/ProductType/edit', compact('product'));
+       }
+
+    public function updata(Request $request , $id){
+
+        ProductTypes::find($id)->update($request->all());
+
+        // dd($request);
+        return redirect('admin/productType/index');
+       }
+
+    public function delete(Request $request,$id){
+
+        $item = ProductTypes::find($id);
+        $item->delete();
+        return redirect('admin/productType/index');
+       }
 }
 
 

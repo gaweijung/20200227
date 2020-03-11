@@ -41,10 +41,10 @@
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="/home/productType">
+                                <a class="dropdown-item" href="/home/productType/">
                                     產品類型管理
                                 </a>
-                                <a class="dropdown-item" href="">
+                                <a class="dropdown-item" href="/home/products/">
                                     產品管理
                                 </a>
 
