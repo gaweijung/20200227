@@ -5,13 +5,15 @@ namespace App\Http\Controllers;
 
 // use DB;
 use App\News;
+use App\Products;
 use Illuminate\Http\Request;
 
 
 class FrontController extends Controller
 {
  public function index(){
-     return view('font/index');
+
+     return view('font/index' );
  }
 
 public function news(){
@@ -25,7 +27,14 @@ public function news_detail($id){
     return view('font/news_detail' , compact('news'));
 }
 public function products(){
-    return view('font/products');
-}
+    $products = Products::all();
 
+    // dd($products);
+    return view('font/products' , compact('products'));
+}
+public function products_detail($id){
+    $products = Products::with('img')->find($id);
+
+    return view('font/products_detail' , compact('products'));
+}
 }

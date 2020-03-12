@@ -27,13 +27,20 @@
 
       </div>
       {{-- <div class="form-group">
-        <label for="exampleFormControlSelect1">Example select</label>
+        <label for="exampleFormControlSelect1">Types</label>
         <select class="form-control" id="types_id" name="types_id" >
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>5</option>
+            @foreach ($productTypes as $item)
+            @if($item->id == $products->types_id)
+            <option value="{{$item->id}}" selected>
+                {{$item->types}}
+            </option>
+            @else
+            <option value="{{$item->id}}">
+                {{$item->types}}
+            </option>
+            @endif
+            @endforeach
+
         </select>
       </div> --}}
     <div class="form-group">

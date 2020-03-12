@@ -7,13 +7,13 @@
     <div class="container">
         <div class="media-container-row">
 
-           title: {{$news->title}}
+           title: {{$products->title}}
            <br>
            多張圖片
 
 
-           @foreach ($news->news_imgs as $news_img)
-                <img width="250"  src="{{asset($news_img->news_img)}}" alt="">
+           @foreach ($products->img as $img)
+                <img width="250"  src="{{asset($img->img)}}" alt="">
 
                 {{-- {{$news_img->news_img}} --}}
            @endforeach

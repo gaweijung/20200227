@@ -17,12 +17,12 @@
 @section('content')
 
 <div class="container">
-<form method="POST" action="/home/products/updata/{{$product->id}}" enctype="multipart/form-data">
+<form method="POST" action="/home/products/updata/{{$products->id}}" enctype="multipart/form-data">
     @csrf
     <br>
     <div class="form-group">
         <label for="img">現有主要圖片</label>
-        <img class="img-fluid" width="250" src="{{asset($product->img)}}" alt="">
+        <img class="img-fluid" width="250" src="{{asset($products->img)}}" alt="">
 
       </div>
       <div class="form-group">
@@ -35,17 +35,35 @@
 
       <div class="form-group">
         <label for="sort">sort</label>
-        <input type="unmber" class="form-control" id="sort" name="sort" value="{{$product->sort}}">
-
+        <input type="unmber" class="form-control" id="sort" name="sort" value="{{$products->sort}}">
       </div>
+
+      <div class="form-group">
+        <label for="exampleFormControlSelect1">Types</label>
+        <select class="form-control" id="types_id" name="types_id" >
+            @foreach ($productTypes as $item)
+            @if($item->id == $products->types_id)
+            <option value="{{$item->id}}" selected>
+                {{$item->types}}
+            </option>
+            @else
+            <option value="{{$item->id}}">
+                {{$item->types}}
+            </option>
+            @endif
+            @endforeach
+
+        </select>
+      </div>
+
     <div class="form-group">
       <label for="title">title</label>
-      <input type="text" class="form-control" id="title" name="title" value="{{$product->title}}">
+      <input type="text" class="form-control" id="title" name="title" value="{{$products->title}}">
 
     </div>
     <div class="form-group">
       <label for="content">content</label>
-      <textarea class="form-control" name="content" id="content" cols="30" rows="10">{!! $product->content !!}</textarea>
+      <textarea class="form-control" name="content" id="content" cols="30" rows="10">{!! $products->content !!}</textarea>
       {{-- <input type="text" class="form-control" id="content" name="content" value="{{$news->content}}"> --}}
     </div>
 
