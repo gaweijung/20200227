@@ -12,7 +12,7 @@ class ProductsController extends Controller
         $items = Products::all();
         $types = ProductTypes::all();
 
-       
+
         return view('admin/products/index' , compact('items'));
 
     }
@@ -38,10 +38,11 @@ class ProductsController extends Controller
         $file = $request->file('img');
         $path = $this->fileUpload($file,'product');
         $types_data['img'] = $path;
+
         }
 
     //    $types = Products::create($types_data);
-          Products::create($products_data);
+     Products::create($products_data);
 
         return redirect('/home/products');
 
@@ -97,5 +98,7 @@ class ProductsController extends Controller
         move_uploaded_file($file, public_path('/upload/'.$dir.'/'.$filename));
         //回傳 資料庫儲存用的路徑格式
         return '/upload/'.$dir.'/'.$filename;
+
+
         }
 }
