@@ -2,31 +2,22 @@
 
 namespace App\Http\Controllers;
 use App\Products;
-use App\ProductTypes;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\File;
 
 class ProductsController extends Controller
 {
     public function index(){
         $items = Products::all();
-        $types = ProductTypes::all();
-
 
         return view('admin/products/index' , compact('items'));
 
     }
 
     public function create(){
-        $productTypes = ProductTypes::all();
-
-        // dd($productTypes);
-        return view('admin/products/create' , compact('productTypes'));
+        return view('admin/products/create');
     }
     public function store(Request $request){
-         $products_data = $request->all();
-
-        // $types_data = $request->all();
+        $types_data = $request->all();
           //上傳檔案
     // $file_name = $request->file('img')->store('','public');
     // $news_data['img'] = $file_name;
@@ -36,40 +27,28 @@ class ProductsController extends Controller
         if($request->hasFile('img')) {
 
         $file = $request->file('img');
-        $path = $this->fileUpload($file,'product');
+        $path = $this->fileUpload($file,'news');
         $types_data['img'] = $path;
-
         }
 
-    //    $types = Products::create($types_data);
-     Products::create($products_data);
+       $types = Products::create($types_data);
+
 
         return redirect('/home/products');
 
     }
     public function edit($id){
-        $productTypes = ProductTypes::all();
-        $products = Products::find($id);
 
-        return view('admin/Products/edit', compact('productTypes' , 'products'));
+        $product = Products::find($id);
+
+        return view('admin/Products/edit', compact('product'));
        }
 
     public function updata(Request $request , $id){
-        $products_data = $request->all();
-        $item = Products::find($id);
 
-        if($request->hasFile('img')){
-            // 刪除舊圖片
-            $old_image = $item->img;
-            File::delete(public_path().$old_image);
+        Products::find($id)->update($request->all());
 
-            // 上傳新圖片
-            $file = $request->file('img');
-            $path = $this->fileUpload($file,'product');
-            $products_data['img'] = $path;
-        }
-        $item -> update($products_data);
-
+        // dd($request);
         return redirect('home/products');
        }
 
@@ -98,7 +77,5 @@ class ProductsController extends Controller
         move_uploaded_file($file, public_path('/upload/'.$dir.'/'.$filename));
         //回傳 資料庫儲存用的路徑格式
         return '/upload/'.$dir.'/'.$filename;
-
-
         }
 }

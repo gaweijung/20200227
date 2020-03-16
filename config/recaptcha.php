@@ -78,7 +78,7 @@ return [
      * @since v3.6.0
      *
      */
-    'default_language'             => "zh-TW",
+    'default_language'             => null,
 
     /**
      *

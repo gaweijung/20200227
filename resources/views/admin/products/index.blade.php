@@ -27,7 +27,7 @@
                 <th>
                     <img width="120" src="{{asset($item->img)}}" alt="">
                 </th>
-                <th>{{$item->types_id}}</th>
+                <th>{{$item->type_id}}</th>
                 <th>{{$item->sort}}</th>
                 <th>{{$item->title}}</th>
                 <th>{!! $item->content !!}</th>

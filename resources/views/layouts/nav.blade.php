@@ -16,11 +16,12 @@
   <link rel="preload" as="style" href="{{asset('assets/mobirise/css/mbr-additional.css')}}">
   <link rel="stylesheet" href="{{asset('assets/mobirise/css/mbr-additional.css')}}" type="text/css">
 
-    <style>
+
+
+@yield('style')
 
 
 
-    </style>
 </head>
 <body>
 <section class="menu cid-qTkzRZLJNu" once="menu" id="menu1-0">
@@ -41,8 +42,8 @@
                     </a>
                 </span>
                 <span class="navbar-caption-wrap">
-                    <a class="navbar-caption text-white display-4" href="https://mobirise.com">
-                        MOBIRISE
+                    <a class="navbar-caption text-white display-4" href="/contact">
+                        與我聯繫
                     </a>
                 </span>
             </div>
@@ -50,7 +51,14 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav nav-dropdown" data-app-modern-menu="true">
                 <li class="nav-item">
-                    <a class="nav-link link text-white display-4" href="/home">                       <span class="mbri-home mbr-iconfont mbr-iconfont-btn"></span>
+                    <a class="nav-link link text-white display-4" href="/shopping">
+                      
+                        購物車
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link link text-white display-4" href="/home">
+                      <span class="mbri-home mbr-iconfont mbr-iconfont-btn"></span>
                         Services
                     </a>
                 </li>

@@ -17,10 +17,10 @@
                     </div>
                     <div class="card-box">
                         <h4 class="card-title mbr-fonts-style display-7">
-                           TITLE: {{$item->title}}
+                            {{$item->title}}
                         </h4>
                         <p class="mbr-text mbr-fonts-style display-7">
-                           CONENET: {!! $item->content !!}
+                            {!! $item->content !!}
                         </p>
                     </div>
                     <div class="mbr-section-btn text-center">

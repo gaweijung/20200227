@@ -11,7 +11,7 @@ class ProductTypes extends Model
          'types' , 'sort'
     ];
 
-//     public function products(){
-//         return $this->hasMany('App\Products')->orderby('sort' , 'desc');
-// }
+    public function products(){
+        return $this->hasMany('App\Products')->orderby('sort' , 'desc');
+}
 }

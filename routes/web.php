@@ -21,7 +21,12 @@ Route::get('/news', 'FrontController@news');
 Route::get('/news/{id}', 'FrontController@news_detail');
 
 Route::get('/products', 'FrontController@products');
-Route::get('/products/{id}', 'FrontController@products_detail');
+Route::get('/products/{product_id}', 'FrontController@products_detail');
+Route::get('/contact', 'FrontController@contact');
+Route::post('/contact/sort', 'FrontController@contact');
+Route::get('/product_detail', 'FrontController@product_detail'); //結帳買
+Route::get('/add_cart/{product_id}', 'FrontController@add_cart'); //加入購物車
+Route::get('/cart', 'FrontController@cart_total'); //購物車總攬
 
 
 // Route::get('logoin', 'HomeController@index');
