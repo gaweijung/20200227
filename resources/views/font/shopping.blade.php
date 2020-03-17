@@ -1,8 +1,7 @@
 @extends('layouts/nav')
 
 
-
-@section('style')
+@section('css')
 <style>
     .product-card{
         min-height: 500px;
@@ -54,7 +53,9 @@
 
 
 </style>
+
 @endsection
+
 
 @section('container')
 <section class="features3 cid-rRF3umTBWU" id="features3-7" style="padding-top:100px">
@@ -66,7 +67,7 @@
          <div class="col-6">
              <div class="product-card">
                 <div class="porduct-info">
-                    <div class="title">{{$product->title}}</div>
+                    <div class="title">Redmi Note 8 Pro</div>
                     <div class="sub-title">6GB+128GB, 珍珠白</div>
                     <div class="price">NT$7,599</div>
                 </div>
@@ -96,23 +97,23 @@
                             </div>
                        </div>
                        <div class="col-4">
-                           <div class="color" data-color="yellow">
+                           <div class="color">
                                黃
                            </div>
                        </div>
                        <div class="col-4">
-                           <div class="color" data-color="green">
+                           <div class="color">
                                綠
                            </div>
                        </div>
                        <div class="col-4">
-                           <div class="color" data-color="purple">
+                           <div class="color">
                                紫
                            </div>
                        </div>
                     </div>
                 </div>
-                <form action="/add_cart/{{$product->id}}" method="post" >
+                <form action="" method="post">
                     @csrf
                     <div class="porduct-qty">
                         數量
@@ -124,13 +125,12 @@
                         <div>
                             <span>Redmi Note 8 Pro</span>
                             <span>珍珠白</span>
-                            <span>6GB+128GB</span>*<span>1</span>
-                            NT${{$product->price}}
+                            <span>6GB+128GB</span>*<script>1</script>
+                            NT$7,599
                         </div>
                       </div>
-                      <input type="text" name="product_id"  hidden>
-                      <input type="text" name="capacity" id="capacity" value="6GB+128GB" hidden>
-                      <input type="text" name="color" id="color" value="red" hidden>
+                      <input type="text" name="capacity" id="capacity">
+                      <input type="text" name="color" id="color" value="red">
                     <button >立即購買</button>
                 </form>
              </div>

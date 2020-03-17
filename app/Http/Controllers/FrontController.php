@@ -5,11 +5,14 @@ namespace App\Http\Controllers;
 
 // use DB;
 use App\News;
-use App\Products;
 use App\Contact;
+use App\Products;
+use App\Mail\sendToUser;
+use App\Mail\OrderShipped;
 use Darryldecode\Cart\Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class FrontController extends Controller
 {
@@ -31,15 +34,29 @@ public function products(){
     return view('font/products');
 }
 
+
 //與我聯繫
-public function contact(Request $request){
-    $user_data = $request->all();
+public function contact(){
+
     return view('font/contact');
 }
+
+public function contact_store(Request $request){
+    $user_data = $request->all();
+
+    $contact = Contact::create($user_data);
+
+    Mail::to('gaweijung@gmail.com')->send(new OrderShipped($contact));
+    return redirect('/contact');
+}
+
 //購物車
-public function products_detail($product_id){
+public function product_detail($product_id){
+
     $Product = Products::find($productId);
-    return view('font/products_detail' , compact('product'));
+
+    return view('font/product_detail' , compact('product'));
+
 }
 
 public function add_cart($product_id){
@@ -58,6 +75,8 @@ public function add_cart($product_id){
         'attributes' => array(),
         'associatedModel' => $Product
     ));
+
+    return redirect('cart');
 }
 
 public function cart_total(){
