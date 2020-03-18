@@ -16,6 +16,7 @@
                 <th>IMG</th>
                 <th>TYPES</th>
                 <th>sort</th>
+                <th>price</th>
                 <th>TITLE</th>
                 <th>CONTENT</th>
                 <th width="125"></th>
@@ -29,6 +30,7 @@
                 </th>
                 <th>{{$item->type_id}}</th>
                 <th>{{$item->sort}}</th>
+                <th>{{$item->price}}</th>
                 <th>{{$item->title}}</th>
                 <th>{!! $item->content !!}</th>
                 <th>

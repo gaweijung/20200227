@@ -112,7 +112,7 @@
                        </div>
                     </div>
                 </div>
-                <form action="/add_cart/{{$product->id}}" method="post" >
+                <form action="/add_cart/1" method="post" >
                     @csrf
                     <div class="porduct-qty">
                         數量

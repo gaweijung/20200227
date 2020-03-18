@@ -51,20 +51,23 @@ public function contact_store(Request $request){
 }
 
 //購物車
-public function product_detail($product_id){
+public function products_detail($productId){
 
     $Product = Products::find($productId);
 
-    return view('font/product_detail' , compact('product'));
+    return view('font/product_detail' , compact('products'));
 
 }
 
-public function add_cart($product_id){
+public function add_cart($productId){
 
-    $productId = $product_id;
+
+
     $Product = Products::find($productId); // assuming you have a Product model with id, name, description & price
     $rowId = $productId; // generate a unique() row ID
     $userID  =  Auth::user()->id; // the user ID to bind the cart contents
+
+
 
     // add the product to cart
     \Cart::session($userID)->add(array(
@@ -76,15 +79,15 @@ public function add_cart($product_id){
         'associatedModel' => $Product
     ));
 
-    return redirect('cart');
+    // return redirect('cart');
 }
 
 public function cart_total(){
+    $userID = Auth::user()->id;  //使用Auth時要確認有沒有登入帳號
 
-
-    $userID = Auth::user()->id;
     $items = \Cart::session($userID)->getContent();
-    return view('font/cart' , compact('items'));
-}
 
+     return view('font/cart' , compact('items'));
+//
+}
 }

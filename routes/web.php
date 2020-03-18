@@ -28,8 +28,9 @@ Route::post('/contact/store', 'FrontController@contact_store');
 
 Route::get('/product_detail', 'FrontController@product_detail'); //結帳買
 
-Route::post('/add_cart/{product_id}', 'FrontController@add_cart'); //加入購物車
+Route::get('/add_cart/{product_id}', 'FrontController@add_cart'); //加入購物車
 Route::get('/cart', 'FrontController@cart_total'); //購物車總攬
+
 
 
 // Route::get('logoin', 'HomeController@index');

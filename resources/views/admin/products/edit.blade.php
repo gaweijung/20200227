@@ -38,6 +38,11 @@
         <input type="unmber" class="form-control" id="sort" name="sort" value="{{$product->sort}}">
 
       </div>
+      <div class="form-group">
+        <label for="price">price</label>
+        <input type="text" class="form-control" id="price" name="price" value="{{$product->price}}">
+
+      </div>
     <div class="form-group">
       <label for="title">title</label>
       <input type="text" class="form-control" id="title" name="title" value="{{$product->title}}">

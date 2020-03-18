@@ -24,7 +24,6 @@
       <div class="form-group">
         <label for="types_id">types</label>
         <input type="text" class="form-control" id="types_id" name="types_id" required>
-
       </div>
       {{-- <div class="form-group">
         <label for="exampleFormControlSelect1">Example select</label>
@@ -41,6 +40,10 @@
       <input type="text" class="form-control" id="title" name="title" required>
 
     </div>
+    <div class="form-group">
+        <label for="price">price</label>
+        <input type="text" class="form-control" id="price" name="price" required>
+      </div>
     <div class="form-group">
       <label for="content">content</label>
       <input type="text" class="form-control" id="content" name="content" required>
